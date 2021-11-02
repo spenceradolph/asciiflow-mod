@@ -1,11 +1,10 @@
 {
-  "name": "asciiflow2",
+  "name": "asciiflow-mod",
   "main": "index.js",
   "icon": "images/favicon.png",
   "scripts": {
-    "start": "webpack serve",
     "build": "webpack --mode production",
-    "develop": "webpack-dev-server --open --mode development --config ./webpack.config.js"
+    "dev": "webpack-dev-server --open --mode development --config ./webpack.config.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
