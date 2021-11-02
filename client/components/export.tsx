@@ -12,13 +12,12 @@ import {
   Snackbar,
   TextareaAutosize,
 } from "@material-ui/core";
-import { ASCII, UNICODE } from "../constants";
-// @ts-ignore
-import styles from "./export.css";
-import { DrawingId, store } from "../store";
-import { layerToText } from "../text_utils";
 import { useObserver } from "mobx-react";
 import * as React from "react";
+import { ASCII, UNICODE } from "../constants";
+import { DrawingId, store } from "../store";
+import { layerToText } from "../text_utils";
+import "./export.css";
 
 export interface IExportConfig {
   wrapper?:
@@ -55,11 +54,15 @@ export function ExportDialog({
         <Dialog
           open={Boolean(open)}
           onClose={() => setOpen(null)}
-          className={store.darkMode.get() ? "dark" : ""}
+          style={
+            store.darkMode.get()
+              ? { backgroundColor: "#333", color: "#fff" }
+              : {}
+          }
         >
           <DialogTitle>Export drawing</DialogTitle>
           <DialogContent>
-            <FormControl className={styles.formControl}>
+            <FormControl style={{ display: "block !important" }}>
               <InputLabel>Character set</InputLabel>
               <Select
                 value={exportConfig.characters ?? "extended"}
@@ -76,7 +79,7 @@ export function ExportDialog({
             </FormControl>
           </DialogContent>
           <DialogContent>
-            <FormControl className={styles.formControl}>
+            <FormControl className={"formControl"}>
               <InputLabel>Comment type</InputLabel>
               <Select
                 value={exportConfig.wrapper || "none"}
@@ -119,7 +122,19 @@ export function ExportDialog({
             </FormControl>
           </DialogContent>
           <DialogContent>
-            <TextareaAutosize value={drawingText} className={styles.textArea} />
+            <TextareaAutosize
+              value={drawingText}
+              style={{
+                padding: "10px",
+                fontFamily: "Courier New, Courier, monospace",
+                whiteSpace: "pre",
+                overflow: "auto !important",
+                minWidth: "500px",
+                resize: "none",
+                border: "none",
+                borderLeft: "3px solid #3f51b5",
+              }}
+            />
           </DialogContent>
           <DialogActions>
             <CopyToClipboardButton text={drawingText} />

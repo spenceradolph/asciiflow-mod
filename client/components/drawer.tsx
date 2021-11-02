@@ -22,8 +22,7 @@ import { useHistory } from "react-router";
 import { DrawingId, DrawingStringifier, store, ToolMode } from "../store";
 import { ControlledDialog } from "./controlled_dialog";
 import { ControlledMenu } from "./controlled_menu";
-// @ts-ignore
-import styles from "./drawer.css";
+import "./drawer.css";
 import { ExportDialog } from "./export";
 
 export function Drawer() {
@@ -32,7 +31,7 @@ export function Drawer() {
     if (!store.controlsOpen.get()) {
       return (
         <Fab
-          className={styles.fab}
+          className={"fab"}
           onClick={() => store.controlsOpen.set(!store.controlsOpen.get())}
         >
           <img src={"/public/logo_min.svg"} />
@@ -40,15 +39,15 @@ export function Drawer() {
       );
     }
     return (
-      <Paper elevation={3} className={styles.drawer}>
-        <div className={styles.header}>
+      <Paper elevation={3} className={"drawer"}>
+        <div className={"header"}>
           <img
             src={
               store.controlsOpen.get()
                 ? "/public/logo_full.svg"
                 : "/public/logo_min.svg"
             }
-            className={styles.logo}
+            className={"logo"}
           />
 
           <IconButton
@@ -129,7 +128,7 @@ export function Drawer() {
                             drawingId.shareSpec
                           ).name
                         : "Default drawing"}{" "}
-                      <span className={styles.bytesLabel}>
+                      <span className={"bytesLabel"}>
                         ({store.canvas(drawingId).committed.size()}B)
                       </span>
                     </ListItemText>
@@ -217,11 +216,11 @@ export function Drawer() {
               </ListItem>
               {!store.editControlsOpen.get() ? null : store.route.shareSpec ? (
                 <>
-                  <div className={styles.helpText}>
+                  <div className={"helpText"}>
                     This is a shared drawing. To make edits fork it so it can be
                     saved locally.
                   </div>
-                  <div className={styles.helpText}>
+                  <div className={"helpText"}>
                     <ForkDrawingButton drawingId={store.route} />
                   </div>
                 </>
@@ -247,7 +246,7 @@ export function Drawer() {
                         variant="outlined"
                         style={{ marginRight: 10 }}
                         label={
-                          <span className={styles.freeformLabel}>
+                          <span className={"freeformLabel"}>
                             {store.freeformCharacter}
                           </span>
                         }
@@ -278,7 +277,7 @@ export function Drawer() {
                   <a href="https://github.com/lewish/asciiflow">
                     <IconButton>
                       <img
-                        className={styles.githubMark}
+                        className={"githubMark"}
                         width="24"
                         height="24"
                         src="public/github_mark.png"
@@ -310,7 +309,7 @@ export function Drawer() {
             </List>
 
             {store.helpControlsOpen.get() && (
-              <div className={styles.helpText}>
+              <div className={"helpText"}>
                 <ToolHelp tool={ToolMode.BOX}>
                   Draw boxes by dragging from one corner to another. Boxes can
                   be resized and moved with the{" "}

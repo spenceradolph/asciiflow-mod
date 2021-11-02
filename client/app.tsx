@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Route, useParams } from "react-router-dom";
 // @ts-ignore
-import styles from "./app.css";
+import "./app.css";
 import { Drawer, View } from "./components";
 import { Controller, DesktopController, TouchController } from "./controller";
 import { DrawingId, store } from "./store";
@@ -38,9 +38,7 @@ export const App = () => {
     );
     return (
       <ThemeProvider theme={theme}>
-        <div
-          className={[styles.app, store.darkMode.get() ? "dark" : ""].join(" ")}
-        >
+        <div className={["app", store.darkMode.get() ? "dark" : ""].join(" ")}>
           <Drawer />
           <View
             {...desktopController.getHandlerProps()}
