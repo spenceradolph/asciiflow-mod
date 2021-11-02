@@ -22,9 +22,16 @@ yarn install
 ### Development
 
 The following command runs a webpack dev-server that serves the client and re-compiles when files are changed.
+Your browser should auto-open http://localhost:9000/ and display the tool.
 
 ```
 yarn run develop
 ```
 
 The package.json contains other applicable scripts for building and testing.
+
+### Templates
+
+Currently, templates can be added into the client/draw/template_ascii.ts file directly.
+This will likely change in future updates to allow easier / user-friendly uploading of templates.
+Simply copy a template, change the variable name and data, and add it to the bottom export with a key to select it.

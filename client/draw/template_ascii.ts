@@ -147,6 +147,7 @@ Tunneling templates
 };
 
 // TODO: make this better
+// "<key_to_press_to_select>": template_var_name
 export const allTemplates: { [key: string]: Template } = {
   "1": template1,
   "2": template2,
