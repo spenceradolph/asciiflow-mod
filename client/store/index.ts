@@ -9,6 +9,7 @@ import {
   DrawSelect,
   DrawText,
   IDrawFunction,
+  TemplatePaste,
 } from "../draw";
 import {
   ArrayStringifier,
@@ -25,6 +26,7 @@ export enum ToolMode {
   ARROWS = 6,
   LINES = 4,
   TEXT = 7,
+  TEMPLATE = 8,
 }
 
 export interface IModifierKeys {
@@ -98,6 +100,7 @@ export class Store {
   public readonly freeformTool = new DrawFreeform();
   public readonly textTool = new DrawText();
   public readonly nullTool = new DrawNull();
+  public readonly templateTool = new TemplatePaste();
 
   @observable private _route: DrawingId = DrawingId.local(null);
 
@@ -112,6 +115,7 @@ export class Store {
   }
 
   @observable public freeformCharacter = "x";
+  @observable public currentTemplateSelection = "1";
 
   @observable private selectedToolMode = ToolMode.BOX;
 
@@ -168,6 +172,8 @@ export class Store {
       ? this.textTool
       : this.toolMode === ToolMode.SELECT
       ? this.selectTool
+      : this.toolMode === ToolMode.TEMPLATE
+      ? this.templateTool
       : this.nullTool;
   }
 

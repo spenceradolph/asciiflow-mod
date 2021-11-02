@@ -19,6 +19,7 @@ import * as Icons from "@material-ui/icons";
 import { useObserver } from "mobx-react";
 import * as React from "react";
 import { useHistory } from "react-router";
+import { allTemplates } from "../draw/template_ascii";
 import { DrawingId, DrawingStringifier, store, ToolMode } from "../store";
 import { ControlledDialog } from "./controlled_dialog";
 import { ControlledMenu } from "./controlled_menu";
@@ -146,7 +147,7 @@ export function Drawer() {
                             menu={true}
                           />
                         ) : (
-                          <>
+                          <div>
                             <ControlledDialog
                               button={
                                 <MenuItem>
@@ -180,7 +181,7 @@ export function Drawer() {
 
                             <RenameDrawingButton drawingId={drawingId} />
                             <ShareButton drawingId={drawingId} />
-                          </>
+                          </div>
                         )}
                         <ExportDialog
                           button={
@@ -269,6 +270,23 @@ export function Drawer() {
                     tool={ToolMode.TEXT}
                     icon={<Icons.TextFields />}
                   />
+                  <ToolControl
+                    name="Templates"
+                    tool={ToolMode.TEMPLATE}
+                    icon={<Icons.EditSharp />}
+                  >
+                    <ListItemSecondaryAction>
+                      <Chip
+                        variant="outlined"
+                        style={{ marginRight: 10 }}
+                        label={
+                          <span className={"freeformLabel"}>
+                            {allTemplates[store.currentTemplateSelection].name}
+                          </span>
+                        }
+                      />
+                    </ListItemSecondaryAction>
+                  </ToolControl>
                 </>
               )}
               <ListItem>
@@ -357,6 +375,10 @@ export function Drawer() {
                 <ToolHelp tool={ToolMode.FREEFORM}>
                   Click and drag to draw freeform characters. Press any key on
                   the keyboard to change the character that will be drawn.
+                </ToolHelp>
+                <ToolHelp tool={ToolMode.TEMPLATE}>
+                  Press the number keys while this tool is selected to change
+                  the template. Click anywhere to paste it.
                 </ToolHelp>
                 <ToolHelp tool={ToolMode.TEXT}>
                   Click on any square and start typing. Press{" "}

@@ -6,5 +6,6 @@ export * from "./line";
 export * from "./move";
 export * from "./null";
 export * from "./select";
+export * from "./template";
 export * from "./text";
 export * from "./utils";

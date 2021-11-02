@@ -120,7 +120,7 @@ export class CanvasStore {
   /**
    * Clears the current drawing scratchpad.
    */
-  clearScratch() {
+  public clearScratch() {
     this.scratch = new Layer();
   }
 
